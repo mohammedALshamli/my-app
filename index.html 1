@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>السيرة الذاتية | Hansha - مهندس شبكات ومطور أنظمة</title>
+  <!-- Google Fonts: Cairo & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-primary: #0a0f1d;
+      --bg-card: rgba(18, 26, 47, 0.75);
+      --bg-card-hover: rgba(28, 40, 72, 0.85);
+      --accent-cyan: #00f2fe;
+      --accent-blue: #4facfe;
+      --accent-purple: #7928ca;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --badge-bg: rgba(0, 242, 254, 0.12);
+      --badge-text: #38bdf8;
+      --shadow-glow: 0 8px 32px 0 rgba(0, 242, 254, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Cairo', 'Outfit', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.7;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(79, 172, 254, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(121, 40, 202, 0.12) 0%, transparent 45%);
+      background-attachment: fixed;
+      padding: 2.5rem 1rem;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* Glassmorphism Card base */
+    .card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(0, 242, 254, 0.35);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* Header Profile */
+    .hero-card {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    }
+
+    .hero-info h1 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 40%, var(--accent-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-info .title {
+      font-size: 1.25rem;
+      color: var(--accent-blue);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-info .summary {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 580px;
+    }
+
+    .avatar-wrapper {
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.3);
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #0d1527;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.7rem;
+      color: var(--accent-cyan);
+      font-weight: 900;
+    }
+
+    /* Section Titles */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.75rem;
+    }
+
+    .section-title span.icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--accent-cyan);
+      font-size: 1.1rem;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .skill-badge {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.45rem 1rem;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .skill-badge:hover {
+      background: rgba(0, 242, 254, 0.25);
+      border-color: var(--accent-cyan);
+      transform: scale(1.05);
+      color: #fff;
+    }
+
+    /* Experience & Education Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-right: 1.75rem;
+      border-right: 2px solid rgba(0, 242, 254, 0.3);
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      box-shadow: 0 0 10px var(--accent-cyan);
+    }
+
+    .timeline-item h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .timeline-meta {
+      font-size: 0.88rem;
+      color: var(--accent-blue);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-item p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-box {
+      background: rgba(13, 21, 39, 0.7);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.25rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-box:hover {
+      border-color: var(--accent-blue);
+      background: rgba(18, 29, 54, 0.85);
+    }
+
+    .project-box h4 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-box p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .project-tags span {
+      background: rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+    }
+
+    /* Certifications Grid */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 0.85rem 1.1rem;
+      border-radius: 12px;
+    }
+
+    .cert-item .cert-icon {
+      font-size: 1.4rem;
+    }
+
+    .cert-item div strong {
+      display: block;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .cert-item div span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      padding: 1rem;
+      border-radius: 12px;
+      color: var(--text-main);
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .contact-card:hover {
+      background: rgba(0, 242, 254, 0.1);
+      border-color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    .contact-icon {
+      font-size: 1.3rem;
+      color: var(--accent-cyan);
+    }
+
+    .contact-card div strong {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .contact-card div span {
+      font-size: 0.95rem;
+      color: #fff;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding-top: 1rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 680px) {
+      .hero-card {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .avatar-wrapper {
+        margin: 0 auto;
+      }
+      .timeline-item {
+        padding-right: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Hero / Profile Card -->
+    <header class="card hero-card">
+      <div class="hero-info">
+        <h1>Hansha</h1>
+        <div class="title">Developer & Network Engineer | مهندس شبكات ومطور برمجيات</div>
+        <p class="summary">
+          مهندس متخصص في هندسة الشبكات وحاويات Docker وأنظمة Linux وإدارة السيرفرات السحابية وتطوير حلول إنترنت الأشياء (IoT & MQTT) وتطبيقات الواجهات الخلفية الحديثة.
+        </p>
+      </div>
+      <div class="avatar-wrapper">
+        <div class="avatar-inner">H</div>
+      </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section class="card">
+      <h2 class="section-title">
+        <span class="icon">⚡</span>
+        المهارات التقنية (Technical Skills)
+      </h2>
+      <div class="skills-grid">
+        <div class="skill-badge">🐳 Docker & Compose</div>
+        <div class="skill-badge">🐧 Linux Administration (Rocky/Ubuntu)</div>
+        <div class="skill-badge">🌐 Network Engineering (Routing, Switching, DNS)</div>
+        <div class="skill-badge">📡 MQTT & IoT Protocols</div>
+        <div class="skill-badge">⚡ FastAPI & Python</div>
+        <div class="skill-badge">⚙️ Nginx Web Server & Reverse Proxy</div>
+        <div class="skill-badge">🔄 CI/CD & DevOps Basics</div>
+        <div class="skill-badge">🛡️ SELinux & Firewalld Security</div>
+        <div class="skill-badge">🗄️ Redis & In-Memory Caching</div>
+        <div class="skill-badge">📜 Bash Scripting & Automation</div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="card">
+      <h2 class="section-title">
+        <span class="icon">💼</span>
+        الخبرة العملية (Work Experience)
+      </h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Network & Infrastructure Specialist</h3>
+          <div class="timeline-meta">2023 - الحالي | مشاريع البنية التحتية والشبكات</div>
+          <p>
+            تصميم وإدارة بيئات العمل المبنية على الحاويات (Docker)، وتكوين خوادم Nginx لتوزيع الأحمال، وضمان استقرار الشبكات وبروتوكولات نقل البيانات.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>Systems & Cloud DevOps Enthusiast</h3>
+          <div class="timeline-meta">2021 - 2023</div>
+          <p>
+            بناء وتطوير واجهات برمجية مخصصة (APIs)، وأتمتة المهام الروتينية باستخدام سكربتات Bash وPython، وربط أجهزة IoT عبر وسطاء بروتوكول MQTT.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="card">
+      <h2 class="section-title">
+        <span class="icon">🚀</span>
+        المشاريع المميزة (Key Projects)
+      </h2>
+      <div class="projects-grid">
+        <div class="project-box">
+          <div>
+            <h4>Docker Multi-Container Lab</h4>
+            <p>بنية متكاملة تتضمن خوادم Nginx مع Hot-Reload، وواجهة FastAPI للتحكم بالسيرفرات مع طبقة Redis Cache وشبكة مخصصة.</p>
+          </div>
+          <div class="project-tags">
+            <span>Docker</span>
+            <span>Nginx</span>
+            <span>Redis</span>
+            <span>FastAPI</span>
+          </div>
+        </div>
+
+        <div class="project-box">
+          <div>
+            <h4>IoT Telemetry & MQTT Broker</h4>
+            <p>نظام مراقبة وقراءة بيانات الحساسات وأجهزة الاستشعار عبر بروتوكول MQTT مع معالجة البيانات وتخزينها وتحليلها فورياً.</p>
+          </div>
+          <div class="project-tags">
+            <span>MQTT</span>
+            <span>Python</span>
+            <span>Linux</span>
+            <span>IoT</span>
+          </div>
+        </div>
+
+        <div class="project-box">
+          <div>
+            <h4>Server Inventory API</h4>
+            <p>تطبيق REST API عالي الأداء مبني بواسطة FastAPI لإدارة مخزون وبيانات خوادم الشبكة وفحص حالتها الصحية آلياً.</p>
+          </div>
+          <div class="project-tags">
+            <span>Python</span>
+            <span>FastAPI</span>
+            <span>Docker</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Certifications -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+      <section class="card">
+        <h2 class="section-title">
+          <span class="icon">🎓</span>
+          التعليم (Education)
+        </h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>بكالوريوس هندسة اتصالات وشبكات</h3>
+            <div class="timeline-meta">كلية الهندسة والتقنية</div>
+            <p>دراسة متعمقة في بروتوكولات الإنترنت (TCP/IP)، وتوزيع الأحمال، ونظم التشغيل المفتوحة المصدر.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title">
+          <span class="icon">🏆</span>
+          الشهادات (Certifications)
+        </h2>
+        <div class="cert-list">
+          <div class="cert-item">
+            <span class="cert-icon">🎖️</span>
+            <div>
+              <strong>Cisco CCNA</strong>
+              <span>Routing & Switching</span>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span class="cert-icon">🐧</span>
+            <div>
+              <strong>Linux RHCSA / LPIC</strong>
+              <span>Linux System Administration</span>
+            </div>
+          </div>
+          <div class="cert-item">
+            <span class="cert-icon">📦</span>
+            <div>
+              <strong>Docker Foundations</strong>
+              <span>Containerization & Orchestration</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="card">
+      <h2 class="section-title">
+        <span class="icon">📫</span>
+        معلومات التواصل (Contact)
+      </h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <span class="contact-icon">✉️</span>
+          <div>
+            <strong>البريد الإلكتروني</strong>
+            <span>hansha@example.com</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <span class="contact-icon">🌐</span>
+          <div>
+            <strong>الموقع / المحفظة</strong>
+            <span>portfolio.local</span>
+          </div>
+        </div>
+        <div class="contact-card">
+          <span class="contact-icon">📍</span>
+          <div>
+            <strong>الموقع الجغرافي</strong>
+            <span>Libya</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Hansha — Hosted on Nginx & Docker Stack</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
